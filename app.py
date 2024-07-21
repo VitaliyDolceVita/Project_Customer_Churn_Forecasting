@@ -44,7 +44,7 @@ input_df = user_input_features()
 
 if input_df is not None:  # гарантує, що дані для обробки були введені користувачем
     def preprocess_input(df):  # Попередня обробка даних
-        df = scaler.transform(df)
+        df = scaler.transform(df) # масштабування введених даних
         return df
 
     preprocessed_input = preprocess_input(input_df)
