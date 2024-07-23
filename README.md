@@ -40,3 +40,6 @@ Customer Churn Forecasting for a Telecommunications Company
 
  Інтегруйте інструмент Docker Compose для спрощення процесу розгортання та управління нашим проєктом у середовищі Docker. Створіть файл docker-compose.yml, який описує послуги, мережі та томи, необхідні для проєкту. Файл повинен дозволяти запускати весь проєкт за допомогою однієї команди docker-compose up, автоматизуючи створення та запуск необхідних Docker контейнерів.
 
+
+ https://pr-cust-churn-forecast.streamlit.app/
+
