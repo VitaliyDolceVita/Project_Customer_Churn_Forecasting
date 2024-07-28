@@ -1,4 +1,5 @@
 # Project_Customer_Churn_Forecasting
+
 Customer Churn Forecasting for a Telecommunications Company
 
 
@@ -11,16 +12,19 @@ Customer Churn Forecasting for a Telecommunications Company
 
 
 
-Dockerfile                       : Визначає середовище для запуску застосунку.
-docker-compose.yml               : Конфігураційний файл для Docker Compose.
-requirements.txt                 : Список залежностей Python для проекту.
-app.py                           : Головний файл застосунку Streamlit.
-data.xlsx                        : Вхідні дані у форматі Excel.
-internet_service_churn.csv       : Додаткові вхідні дані у форматі CSV.
-project_chornovuk.ipynb          : Jupyter Notebook з аналізом даних.
-data_distrib.ipynb               : Jupyter Notebook з попереднім вивченням розподілу даних.
-rf_model.pkl                     : Файл збереженої моделі Random Forest.
-scaler.pkl                       : Файл збереженого масштабувальника даних.
+- **Dockerfile**                       : Файл для створення Docker образу. Він містить інструкції для   побудови середовища,необхідного для запуску додатку.
+
+- **EDA.ipynb**                        : Jupyter Notebook для обробки даних, аналізу, впровадження алгоритму, навчання та збереження моделі.
+
+- **README.md**                        : Файл з описом проекту та інструкціями для користувача.
+- **app.py**                           : Основний скрипт для запуску Streamlit додатку.
+- **data.xlsx**                        : Вхідні дані у форматі Excel.
+- **data_distrib.ipynb**               : Jupyter Notebook для попереднього вивчення розподілу даних.
+- **docker-compose.yml**               : Файл для налаштування та запуску декількох Docker сервісів.
+- **internet_service_churn.csv**       : Вхідні дані у форматі CSV.
+- **requirements.txt**                 : Файл з переліком залежностей для проекту.
+- **rf_model.pkl**                     : Збережена модель Random Forest.
+- **scaler.pkl**                       : Збережений скейлер для нормалізації даних.
 
 
 
