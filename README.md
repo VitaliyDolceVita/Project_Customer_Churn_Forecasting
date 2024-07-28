@@ -96,3 +96,35 @@ docker-compose up
 
       Замініть `<container_id>` на фактичний ID контейнера, який можна знайти за допомогою `docker ps`.
 
+
+
+                        Для роботи зі свого Docker аккаунту та Docker Hub,виконайте наступне 
+
+Збірка Docker образу:
+
+docker build -t customer_churn_forecasting:latest .
+
+Перед тим як завантажити образ на Docker Hub, вам потрібно залогінитися на Docker Hub. 
+Використовуйте команду:
+
+docker login
+
+Вам буде запропоновано ввести ваш логін і пароль від Docker Hub.
+
+Тегуйте ваш образ для Docker Hub. Зазначте репозиторій у вашому обліковому записі на Docker Hub:
+
+docker tag customer_churn_forecasting:latest <your_dockerhub_username>/customer_churn_forecasting:latest
+
+  !!!!!! Замініть <your_dockerhub_username> на ваше ім'я користувача Docker Hub. !!!!
+
+Далі завантажте ваш образ на Docker Hub:
+
+docker push <your_dockerhub_username>/customer_churn_forecasting:latest
+
+  !!!!!! Замініть <your_dockerhub_username> на ваше ім'я користувача Docker Hub. !!!!
+
+Запуск контейнера з використанням Docker Compose:
+
+docker-compose up
+
+
