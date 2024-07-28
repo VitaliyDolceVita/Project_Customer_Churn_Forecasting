@@ -55,7 +55,7 @@ if input_df is not None:  # гарантує, що дані для обробк�
 
     # Вивід результатів
     st.subheader('Ймовірність відтоку клієнта')
-    st.markdown(f"<h2 style='font-size:28px; color: yellow;'>{prediction_proba[0]:.2f}</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_proba[0]:.2f}</h2>", unsafe_allow_html=True)
     # st.write(prediction_proba[0])
 
     st.subheader('Клієнт має високу/низьку ймовірність відтоку')
