@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 # Завантаження збереженої моделі та скалера
-with open('rf_model.pkl', 'rb') as file:
+with open('rf_modelf.pkl', 'rb') as file:
     rf_model = pickle.load(file)
 
 with open('scaler.pkl', 'rb') as file:
