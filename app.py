@@ -19,7 +19,7 @@ def user_input_features():
     is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?/is_movie_package_subscriber", [0, 1], key='is_movie_package_subscriber')
     subscription_age = st.sidebar.number_input("Термін підписки/subscription_age", min_value=0.0, max_value=100.0, step=0.01, key='subscription_age')
     bill_avg = st.sidebar.number_input("Середній рахунок/bill_avg", min_value=0.0, max_value=1000.0, step=0.01, key='bill_avg')
-    reamining_contract = st.sidebar.number_input("Залишок контракту/remaining_contract", min_value=0.0, max_value=100.0, step=0.01, key='remaining_contract')
+    # reamining_contract = st.sidebar.number_input("Залишок контракту/remaining_contract", min_value=0.0, max_value=100.0, step=0.01, key='remaining_contract')
     service_failure_count = st.sidebar.number_input("Кількість збоїв у сервісі/service_failure_count", min_value=0, max_value=100, step=1, key='service_failure_count')
     download_avg = st.sidebar.number_input("Середня швидкість скачування/download_avg", min_value=0.0, max_value=100.0, step=0.01, key='download_avg')
     upload_avg = st.sidebar.number_input("Середня швидкість завантаження/upload_avg", min_value=0.0, max_value=100.0, step=0.01, key='upload_avg')
@@ -30,7 +30,7 @@ def user_input_features():
         'is_movie_package_subscriber': is_movie_package_subscriber,
         'subscription_age': subscription_age,
         'bill_avg': bill_avg,
-        'reamining_contract': reamining_contract,
+        # 'reamining_contract': reamining_contract,
         'service_failure_count': service_failure_count,
         'download_avg': download_avg,
         'upload_avg': upload_avg,
