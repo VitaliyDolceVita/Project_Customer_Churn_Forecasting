@@ -67,14 +67,11 @@ if st.sidebar.button('Прогнозувати'):
     if input_df is not None:  # гарантує, що дані для обробки були введені користувачем
         def preprocess_input(df):  # Попередня обробка даних
             # Масштабуємо лише ті колонки, які були використані при навчанні скалера
-            df_scaled = df[['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg', 'upload_avg',
-                            'download_over_limit']]
+            df_scaled = df[['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg', 'upload_avg', 'download_over_limit']]
             df_scaled = scaler.transform(df_scaled)
 
             # Перетворюємо назад в DataFrame
-            df_scaled = pd.DataFrame(df_scaled,
-                                     columns=['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg',
-                                              'upload_avg', 'download_over_limit'])
+            df_scaled = pd.DataFrame(df_scaled, columns=['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg','upload_avg', 'download_over_limit'])
 
             # Додаємо немасштабовані колонки
             df_scaled['is_tv_subscriber'] = df['is_tv_subscriber'].values
