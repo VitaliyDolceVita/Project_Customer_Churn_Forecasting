@@ -101,7 +101,7 @@ if st.sidebar.button('Прогнозувати'):
             st.subheader('Клієнт має високу/низьку ймовірність відтоку:')
 
             if prediction[0] == 1:
-                st.markdown("<h2 style='font-size:28px; color: red;'>Клієнт має високу ймовірність відтоку</h2>", unsafe_allow_html=True)
+                st.markdown("<h2 style='font-size:28px; color: red;'>Клієнт має високу ймовірність відтоку</h2>", unsafe_allow_html=True) # Якщо unsafe_allow_html встановлений на True, Streamlit інтерпретує HTML-код і відображає його
             else:
                 st.markdown("<h2 style='font-size:28px; color: green;'>Клієнт має низьку ймовірність відтоку</h2>", unsafe_allow_html=True)
         except ValueError as e:
