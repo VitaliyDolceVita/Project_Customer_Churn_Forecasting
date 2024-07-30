@@ -3,17 +3,11 @@ import pandas as pd
 import pickle
 
 # Завантаження збереженої моделі та скалера
-try:
-    with open('rf_modelff91.pkl', 'rb') as file:
-        rf_model = pickle.load(file)
-    with open('scalerff91.pkl', 'rb') as file:
-        scaler = pickle.load(file)
-except FileNotFoundError as e:
-    st.error(f"Файл не знайдено: {e}")
-    st.stop()
-except Exception as e:
-    st.error(f"Помилка при завантаженні моделі або скалера: {e}")
-    st.stop()
+with open('rf_modelff91.pkl', 'rb') as file:
+    rf_model = pickle.load(file)
+
+with open('scalerff91.pkl', 'rb') as file:
+    scaler = pickle.load(file)
 
 st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]")
 
@@ -24,7 +18,6 @@ def user_input_features():
     is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?", [0, 1], key='is_movie_package_subscriber')
     subscription_age = st.sidebar.number_input("Термін підписки", min_value=0.0, max_value=100.0, step=0.01, key='subscription_age')
     bill_avg = st.sidebar.number_input("Середній рахунок", min_value=0.0, max_value=1000.0, step=0.01, key='bill_avg')
-    # reamining_contract = st.sidebar.number_input("Залишок контракту", min_value=0.0, max_value=100.0, step=0.01, key='remaining_contract')
     service_failure_count = st.sidebar.number_input("Кількість збоїв у сервісі", min_value=0, max_value=100, step=1, key='service_failure_count')
     download_avg = st.sidebar.number_input("Середня швидкість скачування", min_value=0.0, max_value=100.0, step=0.01, key='download_avg')
     upload_avg = st.sidebar.number_input("Середня швидкість завантаження", min_value=0.0, max_value=100.0, step=0.01, key='upload_avg')
@@ -35,7 +28,6 @@ def user_input_features():
         'is_movie_package_subscriber': is_movie_package_subscriber,
         'subscription_age': subscription_age,
         'bill_avg': bill_avg,
-        # 'reamining_contract': reamining_contract,
         'service_failure_count': service_failure_count,
         'download_avg': download_avg,
         'upload_avg': upload_avg,
@@ -48,6 +40,17 @@ def user_input_features():
 input_df = user_input_features()
 
 def preprocess_input(df):
+    # Переконайтесь, що усі необхідні ознаки включені
+    required_features = ['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg',
+                         'upload_avg', 'download_over_limit']
+    
+    for feature in required_features:
+        if feature not in df.columns:
+            df[feature] = 0  # Заповнюємо відсутні ознаки нулями або значеннями за замовчуванням
+
+    # Переставте стовпці у правильному порядку
+    df = df[required_features]
+    
     try:
         df = scaler.transform(df)  # Масштабування введених даних
         return df
