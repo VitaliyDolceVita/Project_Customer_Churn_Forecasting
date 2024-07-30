@@ -96,7 +96,7 @@ if st.sidebar.button('Прогнозувати'):
             # Вивід результатів
             st.subheader('Ймовірність відтоку клієнта:')
             prediction_percentage = prediction_proba[0] * 100
-            st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_percentage:.0f}%</h2>",unsafe_allow_html=True) # вставка значення змінної prediction_percentage, округленого до цілого числа (форматування .0f), з додаванням знака %.
+            st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_percentage:.0f}%</h2>", unsafe_allow_html=True) # вставка значення змінної prediction_percentage, округленого до цілого числа (форматування .0f), з додаванням знака %.
 
             st.subheader('Клієнт має високу/низьку ймовірність відтоку:')
 
