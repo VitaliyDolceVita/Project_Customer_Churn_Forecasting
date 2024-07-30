@@ -23,8 +23,8 @@ Customer Churn Forecasting for a Telecommunications Company
 - **docker-compose.yml**               : Файл для налаштування та запуску декількох Docker сервісів.
 - **internet_service_churn.csv**       : Вхідні дані у форматі CSV.
 - **requirements.txt**                 : Файл з переліком залежностей для проекту.
-- **rf_model.pkl**                     : Збережена модель Random Forest.
-- **scaler.pkl**                       : Збережений скейлер для нормалізації даних.
+- **rf_modelf1.pkl**                     : Збережена модель Random Forest.
+- **scalerf1.pkl**                       : Збережений скейлер для нормалізації даних.
 
 
 
