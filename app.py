@@ -3,15 +3,28 @@ import pandas as pd
 import pickle
 
 # Завантаження збереженої моделі та скалера
-with open('rf_modelf1.pkl', 'rb') as file:
-    rf_model = pickle.load(file)
+model_path = 'rf_modelf1.pkl'
+scaler_path = 'scalerf1.pkl'
 
-with open('scalerf1.pkl', 'rb') as file:
-    scaler = pickle.load(file)
+try:
+    with open(model_path, 'rb') as file:
+        rf_model = pickle.load(file)
+except FileNotFoundError:
+    st.error(f"Файл моделі '{model_path}' не знайдено.")
+except pickle.UnpicklingError:
+    st.error(f"Помилка при розпаковці файлу моделі '{model_path}'.")
+
+try:
+    with open(scaler_path, 'rb') as file:
+        scaler = pickle.load(file)
+except FileNotFoundError:
+    st.error(f"Файл скалера '{scaler_path}' не знайдено.")
+except pickle.UnpicklingError:
+    st.error(f"Помилка при розпаковці файлу скалера '{scaler_path}'.")
 
 st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]")
 
-st.sidebar.header("Введіть дані нового клієнта:") # Цей рядок додає заголовок до бічної панелі, який запрошує користувача ввести дані нового клієнта.
+st.sidebar.header("Введіть дані нового клієнта:")
 
 
 # Функція для введення даних клієнта через інтерфейс Streamlit
@@ -76,22 +89,26 @@ if st.sidebar.button('Прогнозувати'):
         preprocessed_input = preprocess_input(input_df)
 
         # Прогнозування
-        prediction_proba = rf_model.predict_proba(preprocessed_input)[:, 1]
-        prediction = (prediction_proba >= 0.5).astype(int)
+        try:
+            prediction_proba = rf_model.predict_proba(preprocessed_input)[:, 1]
+            prediction = (prediction_proba >= 0.5).astype(int)
 
-        # Вивід результатів
-        st.subheader('Ймовірність відтоку клієнта')
-        st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_proba[0]:.2f}</h2>",
-                    unsafe_allow_html=True)
-
-        st.subheader('Клієнт має високу/низьку ймовірність відтоку')
-
-        if prediction[0] == 1:
-            st.markdown("<h2 style='font-size:28px; color: red;'>Клієнт має високу ймовірність відтоку</h2>",
+            # Вивід результатів
+            st.subheader('Ймовірність відтоку клієнта')
+            prediction_percentage = prediction_proba[0] * 100
+            st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_percentage:.0f}%</h2>",
                         unsafe_allow_html=True)
-        else:
-            st.markdown("<h2 style='font-size:28px; color: green;'>Клієнт має низьку ймовірність відтоку</h2>",
-                        unsafe_allow_html=True)
+
+            st.subheader('Клієнт має високу/низьку ймовірність відтоку')
+
+            if prediction[0] == 1:
+                st.markdown("<h2 style='font-size:28px; color: red;'>Клієнт має високу ймовірність відтоку</h2>",
+                            unsafe_allow_html=True)
+            else:
+                st.markdown("<h2 style='font-size:28px; color: green;'>Клієнт має низьку ймовірність відтоку</h2>",
+                            unsafe_allow_html=True)
+        except ValueError as e:
+            st.error(f"Помилка при прогнозуванні: {e}")
 
 
 
