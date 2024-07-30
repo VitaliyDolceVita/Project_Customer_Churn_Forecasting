@@ -15,6 +15,8 @@ st.sidebar.header("Введіть дані нового клієнта:")
 
 # Функція для введення даних клієнта через інтерфейс Streamlit
 def user_input_features():
+    is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?/is_movie_package_subscriber", [0, 1], key='is_movie_package_subscriber')
+    is_tv_subscriber = st.sidebar.selectbox("Чи є абонентом телебачення?/is_tv_subscriber", [0, 1], key='is_tv_subscriber')
     # is_tv_subscriber = st.sidebar.selectbox("Чи є абонентом телебачення?/is_tv_subscriber", [0, 1], key='is_tv_subscriber')
     # is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?/is_movie_package_subscriber", [0, 1], key='is_movie_package_subscriber')
     subscription_age = st.sidebar.number_input("Термін підписки/subscription_age", min_value=0.0, max_value=100.0, step=0.01, key='subscription_age')
@@ -26,6 +28,8 @@ def user_input_features():
     download_over_limit = st.sidebar.number_input("Кількість перевищень ліміту скачування?/download_over_limit", min_value=0, max_value=100, step=1, key='download_over_limit')
 
     data = {
+        'is_movie_package_subscriber': is_movie_package_subscriber,
+        'is_tv_subscriber': is_tv_subscriber,
         # 'is_tv_subscriber': is_tv_subscriber,
         # 'is_movie_package_subscriber': is_movie_package_subscriber,
         'subscription_age': subscription_age,
