@@ -94,12 +94,12 @@ if st.sidebar.button('Прогнозувати'):
             prediction = (prediction_proba >= 0.5).astype(int)
 
             # Вивід результатів
-            st.subheader('Ймовірність відтоку клієнта')
+            st.subheader('Ймовірність відтоку клієнта:')
             prediction_percentage = prediction_proba[0] * 100
             st.markdown(f"<h2 style='font-size:28px; color: magenta;'>{prediction_percentage:.0f}%</h2>",
                         unsafe_allow_html=True)
 
-            st.subheader('Клієнт має високу/низьку ймовірність відтоку')
+            st.subheader('Клієнт має високу/низьку ймовірність відтоку:')
 
             if prediction[0] == 1:
                 st.markdown("<h2 style='font-size:28px; color: red;'>Клієнт має високу ймовірність відтоку</h2>",
