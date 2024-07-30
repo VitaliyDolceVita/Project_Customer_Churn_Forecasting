@@ -3,10 +3,10 @@ import pandas as pd
 import pickle
 
 # Завантаження збереженої моделі та скалера
-with open('rf_modelf.pkl', 'rb') as file:
+with open('rf_modelf9.pkl', 'rb') as file:
     rf_model = pickle.load(file)
 
-with open('scaler8.pkl', 'rb') as file:
+with open('scaler9.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
 st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]")
