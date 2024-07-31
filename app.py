@@ -49,7 +49,7 @@ def user_input_features():
         'download_over_limit': download_over_limit
     }
 
-    features = pd.DataFrame(data, index=[0]) # збережені дані поміщаєм в датафрейм
+    features = pd.DataFrame(data, index=[0]) # збережені дані поміщаєм в датафрейм, DataFrame матиме лише один рядок, і індекс цього рядка буде дорівнювати 0.
     return features # функція повертає датафрейм збережений з введеними даними
 
 
