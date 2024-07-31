@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 
-model_path = 'rf_modelf1.pkl' # завантаження збереженої моделі та скалера
+model_path = 'rf_modelf1.pkl' # завантаження збереженої моделі та масштабувальника
 scaler_path = 'scalerf1.pkl'
 
 try:
