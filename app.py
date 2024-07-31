@@ -22,9 +22,9 @@ except FileNotFoundError:
 except pickle.UnpicklingError:
     st.error(f"Помилка при розпаковці файлу скалера '{scaler_path}'.")
 
-st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]") # функція використовується для виведення HTML/Markdown-коду на сторінку Streamlit.
+st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]") # функція використовується для виведення HTML/Markdown-коду на сторінку Streamlit
 
-st.sidebar.header("Введіть дані нового клієнта:")
+st.sidebar.header("Введіть дані нового клієнта:") # вивід інформації для користувача на бічній панелі
 
 
 # функція для введення даних клієнта через інтерфейс Streamlit
