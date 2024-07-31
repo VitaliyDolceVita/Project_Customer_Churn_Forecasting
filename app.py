@@ -36,7 +36,7 @@ def user_input_features():
     service_failure_count = st.sidebar.number_input("Кількість збоїв у сервісі/service_failure_count", min_value=0, max_value=100, step=1, key='service_failure_count')
     download_avg = st.sidebar.number_input("Середня швидкість скачування/download_avg", min_value=0.0, max_value=100.0, step=0.01, key='download_avg')
     upload_avg = st.sidebar.number_input("Середня швидкість завантаження/upload_avg", min_value=0.0, max_value=100.0, step=0.01, key='upload_avg')
-    download_over_limit = st.sidebar.number_input("Кількість перевищень ліміту скачування?/download_over_limit", min_value=0, max_value=100, step=1, key='download_over_limit')
+    download_over_limit = st.sidebar.number_input("Кількість перевищень ліміту скачування/download_over_limit", min_value=0, max_value=100, step=1, key='download_over_limit')
 
     data = {
         'is_tv_subscriber': is_tv_subscriber,
