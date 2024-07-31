@@ -3,11 +3,11 @@
 Customer Churn Forecasting for a Telecommunications Company
 
 Посилання на ТЗ:
-ТЗ Python Data Science "Прогнозування Відтоку Клієнтів для Телекомунікаційної компанії" - Google Документи
+[ТЗ Python Data Science "Прогнозування Відтоку Клієнтів для Телекомунікаційної компанії" - Google Документи](https://docs.google.com/document/d/1d7LTYIQfEAVoK3YZdrlRwlawLBwsfiBJWTVJ-wHpBpA/edit#heading=h.2viv4ety148c)
 Посилання на сайт додатку:
 https://pr-cust-churn-forecast.streamlit.app/
 Посилання на відео інструкцію по запуску докер контейнера:
-Запуск докер контейнера (youtube.com)
+[Запуск докер контейнера (youtube.com)](https://www.youtube.com/watch?v=QrY3sB23xBY)
 
 
 
