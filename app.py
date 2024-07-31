@@ -38,7 +38,7 @@ def user_input_features():
     upload_avg = st.sidebar.number_input("Середня швидкість завантаження/upload_avg", min_value=0.0, max_value=100.0, step=0.01, key='upload_avg')
     download_over_limit = st.sidebar.number_input("Кількість перевищень ліміту скачування/download_over_limit", min_value=0, max_value=100, step=1, key='download_over_limit')
 
-    data = {
+    data = { # дані зберігаєм в словник
         'is_tv_subscriber': is_tv_subscriber,
         'is_movie_package_subscriber': is_movie_package_subscriber,
         'subscription_age': subscription_age,
