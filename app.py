@@ -79,7 +79,7 @@ if st.sidebar.button('Прогнозувати'): # якщо користува�
         # прогнозування
         try:
             prediction_proba = rf_model.predict_proba(preprocessed_input)[:, 1]
-            prediction = (prediction_proba >= 0.5).astype(int)
+            prediction = (prediction_proba >= 0.5).astype(int) # перетворює масив булевих значень (True/False) в масив цілих чисел. True перетворюється в 1, а False - в 0.
 
             # вивід результатів
             st.subheader('Ймовірність відтоку клієнта:')
