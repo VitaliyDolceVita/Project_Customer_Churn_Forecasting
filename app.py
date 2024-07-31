@@ -60,7 +60,7 @@ if st.sidebar.button('Прогнозувати'): # якщо користува�
         def preprocess_input(df):  # Попередня обробка датафрейму даних
             # Масштабуємо лише ті колонки, які були використані при нормалізації
             df_scaled = df[['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg', 'upload_avg', 'download_over_limit']]
-            df_scaled = scaler.transform(df_scaled)
+            df_scaled = scaler.transform(df_scaled) # цей метод застосовує перетворення, яке було визначене під час навчання скалера, до нових даних
 
             # Перетворюємо назад в DataFrame
             df_scaled = pd.DataFrame(df_scaled, columns=['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg','upload_avg', 'download_over_limit'])
@@ -74,7 +74,7 @@ if st.sidebar.button('Прогнозувати'): # якщо користува�
             return df_scaled
 
 
-        preprocessed_input = preprocess_input(input_df)
+        preprocessed_input = preprocess_input(input_df) #  зберігаєм в змінну
 
         # Прогнозування
         try:
@@ -93,7 +93,7 @@ if st.sidebar.button('Прогнозувати'): # якщо користува�
             else:
                 st.markdown("<h2 style='font-size:28px; color: green;'>Клієнт має низьку ймовірність відтоку</h2>", unsafe_allow_html=True)
         except ValueError as e:
-            st.error(f"Помилка при прогнозуванні: {e}")
+            st.error(f"Помилка при прогнозуванні: {e}")  # обробляєм помилки
 
 
 
