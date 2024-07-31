@@ -1,15 +1,15 @@
-import streamlit as st
+import streamlit as st   # Імпортуємо потрібні бібліотеки
 import pandas as pd
 import pickle
 
-# Завантаження збереженої моделі та скалера
-model_path = 'rf_modelf1.pkl'
+
+model_path = 'rf_modelf1.pkl' # Завантаження збереженої моделі та скалера
 scaler_path = 'scalerf1.pkl'
 
 try:
     with open(model_path, 'rb') as file:
         rf_model = pickle.load(file)
-except FileNotFoundError:
+except FileNotFoundError:   # Обробляєм помилки
     st.error(f"Файл моделі '{model_path}' не знайдено.")
 except pickle.UnpicklingError:
     st.error(f"Помилка при розпаковці файлу моделі '{model_path}'.")
@@ -22,15 +22,15 @@ except FileNotFoundError:
 except pickle.UnpicklingError:
     st.error(f"Помилка при розпаковці файлу скалера '{scaler_path}'.")
 
-st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]")
+st.markdown("# :rainbow[Прогнозування Відтоку Клієнтів]") # функція використовується для виведення HTML/Markdown-коду на сторінку Streamlit.
 
 st.sidebar.header("Введіть дані нового клієнта:")
 
 
 # Функція для введення даних клієнта через інтерфейс Streamlit
 def user_input_features():
-    is_tv_subscriber = st.sidebar.selectbox("Чи є абонентом телебачення?/is_tv_subscriber", [0, 1], key='is_tv_subscriber')
-    is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?/is_movie_package_subscriber", [0, 1], key='is_movie_package_subscriber')
+    is_tv_subscriber = st.sidebar.selectbox("Чи є абонентом телебачення?/is_tv_subscriber", [0, 1], key='is_tv_subscriber') # для кожного віджета призначаємо унікальний ключ
+    is_movie_package_subscriber = st.sidebar.selectbox("Чи є абонентом пакету фільмів?/is_movie_package_subscriber", [0, 1], key='is_movie_package_subscriber') 
     subscription_age = st.sidebar.number_input("Термін підписки/subscription_age", min_value=0.0, max_value=100.0, step=0.01, key='subscription_age')
     bill_avg = st.sidebar.number_input("Середній рахунок/bill_avg", min_value=0.0, max_value=1000.0, step=0.01, key='bill_avg')
     service_failure_count = st.sidebar.number_input("Кількість збоїв у сервісі/service_failure_count", min_value=0, max_value=100, step=1, key='service_failure_count')
@@ -49,16 +49,16 @@ def user_input_features():
         'download_over_limit': download_over_limit
     }
 
-    features = pd.DataFrame(data, index=[0])
-    return features
+    features = pd.DataFrame(data, index=[0]) # збережені дані поміщаєм в датафрейм
+    return features # функція повертає датафрейм збережений з введеними даними
 
 
-input_df = user_input_features()
+input_df = user_input_features() # зберігаєм в змінну датафрейм після обробки функцією
 
-if st.sidebar.button('Прогнозувати'):
+if st.sidebar.button('Прогнозувати'): # якщо користувач нажав кнопку
     if input_df is not None:  # гарантує, що дані для обробки були введені користувачем
-        def preprocess_input(df):  # Попередня обробка даних
-            # Масштабуємо лише ті колонки, які були використані при навчанні скалера
+        def preprocess_input(df):  # Попередня обробка датафрейму даних
+            # Масштабуємо лише ті колонки, які були використані при нормалізації
             df_scaled = df[['subscription_age', 'bill_avg', 'service_failure_count', 'download_avg', 'upload_avg', 'download_over_limit']]
             df_scaled = scaler.transform(df_scaled)
 
@@ -70,8 +70,7 @@ if st.sidebar.button('Прогнозувати'):
             df_scaled['is_movie_package_subscriber'] = df['is_movie_package_subscriber'].values
 
             # Переставляємо колонки в правильному порядку
-            df_scaled = df_scaled[['is_tv_subscriber', 'is_movie_package_subscriber', 'subscription_age', 'bill_avg',
-                                   'service_failure_count', 'download_avg', 'upload_avg', 'download_over_limit']]
+            df_scaled = df_scaled[['is_tv_subscriber', 'is_movie_package_subscriber', 'subscription_age', 'bill_avg', 'service_failure_count', 'download_avg', 'upload_avg', 'download_over_limit']]
             return df_scaled
 
 
