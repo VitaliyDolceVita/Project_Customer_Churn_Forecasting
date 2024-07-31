@@ -1,6 +1,6 @@
 import streamlit as st   # імпортуємо потрібні бібліотеки
 import pandas as pd
-import pickle
+import pickle # модуль в Python, який дозволяє серіалізувати та десеріалізувати об'єкти Python
 
 
 model_path = 'rf_modelf1.pkl' # завантаження збереженої моделі та масштабувальника
