@@ -133,6 +133,16 @@ docker push <your_dockerhub_username>/customer_churn_forecasting:latest
 
 Запуск контейнера з використанням Docker Compose:
 
-docker-compose up  – запуск служб, визначених у файлі docker-compose.yml. Ця команда створить і запустить контейнери для кожного сервісу, а також створить мережу для взаємодії контейнерів.
+docker-compose up  
 
+
+
+найпоширеніші команди для роботи з файлом docker-compose.yml:
+
+docker-compose up – запуск служб, визначених у файлі docker-compose.yml. Ця команда створить і запустить контейнери для кожного сервісу, а також створить мережу для взаємодії контейнерів.
+docker-compose down – зупинити і видалити контейнери, мережі і томи, створені командою docker-compose up.
+docker-compose ps – виведе список контейнерів, створених docker-compose up, а також їхній статус та іншу інформацію.
+docker-compose logs – перегляд логів контейнерів, створених docker-compose up.
+docker-compose exec <ім’я служби> <команда> – виконати команду в запущеному контейнері, створеному docker-compose up. Наприклад, docker-compose exec redis redis-cli запустить команду redis-cli в контейнері redis.
+docker-compose build – перебудувати образи, визначені у файлі docker-compose.yml. Це може бути корисно, якщо ви внесли зміни до своїх сервісів і хочете переконатися, що образи актуальні.
 
