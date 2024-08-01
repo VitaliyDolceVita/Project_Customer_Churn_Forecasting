@@ -133,6 +133,6 @@ docker push <your_dockerhub_username>/customer_churn_forecasting:latest
 
 Запуск контейнера з використанням Docker Compose:
 
-docker-compose up
+docker-compose up  – запуск служб, визначених у файлі docker-compose.yml. Ця команда створить і запустить контейнери для кожного сервісу, а також створить мережу для взаємодії контейнерів.
 
 
